@@ -1,0 +1,58 @@
+# /etc/zabbix/zabbix-agentd.conf.d/domain
+#
+# Managed by Puppet
+#
+
+PidFile=/var/run/zabbix/zabbix_agentd.pid
+LogFile=/var/log/zabbix-agent/zabbix_agentd.log
+<% if @zbxLogFileSize %>LogFileSize=<%= @zbxLogFileSize %><% else %>LogFileSize=2<% end %>
+<% if @zbxDebugLevel %>DebugLevel=<%= @zbxDebugLevel %><% else %>DebugLevel=0<% end %>
+
+<% if @zbxServer %>Server=<%= @zbxServer %><% else %>Server=10.193.2.6<% end %>
+<% if @zbxServerPort %>ServerPort=<%= @zbxServerPort %><% else %>ServerPort=10051<% end %>
+
+<% if @zbxHostname %>Hostname=<%= @zbxHostname %><% else %>Hostname=<%= fqdn %><% end %>
+<% if @zbxSourceIP %>SourceIP=<%= @zbxSourceIP %><% else %>SourceIP=<%= ipaddress %><% end %>
+<% if @zbxListenIP %>ListenIP=<%= @zbxListenIP %><% else %>ListenIP=<%= ipaddress %><% end %>
+<% if @zbxListenPort %>ListenPort=<%= @zbxListenPort %><% else %>ListenPort=10050<% end %>
+
+<% if @zbxEnableRemoteCommands %>EnableRemoteCommands=<%= @zbxEnableRemoteCommands %><% else %>EnableRemoteCommands=0<% end %>
+<% if @zbxAllowRoot %>AllowRoot=<%= @zbxAllowRoot %><% else %>AllowRoot=0<% end %>
+<% if @zbxLogRemoteCommands %>LogRemoteCommands=<%= @zbxLogRemoteCommands %><% else %>LogRemoteCommands=0<% end %>
+
+DisablePassive=0
+DisableActive=0
+
+RefreshActiveChecks=60
+BufferSend=5
+BufferSize=100
+MaxLinesPerSecond=100
+
+<% if @zbxStartAgents %>StartAgents=<%= @zbxStartAgents %><% else %>StartAgents=8<% end %>
+<% if @zbxTimeout %>Timeout=<%= @zbxTimeout %><% else %>Timeout=30<% end %>
+
+UserParameter=vfs.dev.read.ops[*],cat /proc/diskstats |grep $1 | head -1 |awk '{print $ 4}'
+UserParameter=vfs.dev.read.ms[*],cat /proc/diskstats |grep $1 | head -1 |awk '{print $ 7}'
+UserParameter=vfs.dev.write.ops[*],cat /proc/diskstats |grep $1 | head -1 |awk '{print $ 8}'
+UserParameter=vfs.dev.write.ms[*],cat /proc/diskstats |grep $1 | head -1 |awk '{print $ 11}'
+UserParameter=vfs.dev.io.active[*],cat /proc/diskstats |grep $1 | head -1 |awk '{print $ 12}'
+UserParameter=vfs.dev.io.ms[*],cat /proc/diskstats |grep $1 | head -1 |awk '{print $ 13}'
+UserParameter=vfs.dev.read.sectors[*],cat /proc/diskstats |grep $1 | head -1 |awk '{print $ 6}'
+UserParameter=vfs.dev.write.sectors[*],cat /proc/diskstats |grep $1 | head -1 |awk '{print $ 10}'
+
+#UserParameter=system.swap.in,vmstat -s |grep 'pages swapped in' |awk '{print $ 1}'
+#UserParameter=system.swap.out,vmstat -s |grep 'pages swapped out' |awk '{print $ 1}'
+
+UserParameter=proc.puppet.run,ps -ef |grep -v grep |grep puppet |wc -l
+
+UserParameter=system.dns.lookup,dig A domain.tld |grep 'ANSWER:' |awk '{print $9}' |cut -d ',' -f1
+
+UserParameter=proc.mem.rss[*],ps aux |grep -v grep |grep $1 |awk '{print $ 6}'
+UserParameter=proc.mem.vsz[*],ps aux |grep -v grep |grep $1 |awk '{print $ 5}'
+
+UserParameter=os.vendors,lsb_release -is
+UserParameter=os.release,lsb_release -rs
+UserParameter=os.codename,lsb_release -cs
+UserParameter=os.description,lsb_release -ds
+
+UserParameter=unattended,dpkg -l |grep 'unattended-upgrades' |wc -l

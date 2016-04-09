@@ -1,0 +1,11 @@
+#
+# /etc/zabbix/zabbix-agentd.conf.d/debian
+# Configuration file for zabbix-agentd
+# Managed by Puppet
+#
+
+#UserParameter=debian.updates[*],apt-get update &>/dev/null;apt-get -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/$1.sources.list -o Dir::Etc::sourceparts=/etc/apt/sources.list.d/$1.sources.list -s dist-upgrade |grep '^Inst' |wc -l
+#UserParameter=debian.updates[*],aptitude update &>/dev/null;aptitude -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/$1.sources.list -o Dir::Etc::sourceparts=/etc/apt/sources.list.d/$1.sources.list search '~U' | wc -l
+
+UserParameter=debian.updates[*],apt-get update &>/dev/null;apt-get -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/$1.sources.list -o Dir::Etc::sourceparts=/etc/apt/sources.list.d/$1.sources.list -s dist-upgrade |grep '^Inst'  |grep -v 'linux-image\|linux-headers\|linux-server' |wc -l                                                                                                                                                                                                                                                                                 
+UserParameter=debian.kernel-updates[*],apt-get update &>/dev/null;apt-get -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/$1.sources.list -o Dir::Etc::sourceparts=/etc/apt/source.list.d/$1.sources.list -s dist-upgrade |grep '^Inst' |grep 'linux-image\|linux-headers\|linux-server' |wc -l 

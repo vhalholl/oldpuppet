@@ -1,0 +1,13 @@
+#
+# /etc/zabbix/zabbix-agentd.conf.d/domain
+# Configuration file for zabbix-agentd
+# Managed by Puppet
+#
+
+UserParameter=mysql.ping,mysqladmin --defaults-file=/etc/mysql/debian.cnf ping|grep alive|wc -l
+UserParameter=mysql.uptime,mysqladmin --defaults-file=/etc/mysql/debian.cnf status|cut -f2 -d":"|cut -f1 -d"T"
+UserParameter=mysql.threads,mysqladmin --defaults-file=/etc/mysql/debian.cnf status|cut -f3 -d":"|cut -f1 -d"Q"
+UserParameter=mysql.questions,mysqladmin --defaults-file=/etc/mysql/debian.cnf status|cut -f4 -d":"|cut -f1 -d"S"
+UserParameter=mysql.slowqueries,mysqladmin --defaults-file=/etc/mysql/debian.cnf status|cut -f5 -d":"|cut -f1 -d"O"
+UserParameter=mysql.qps,mysqladmin --defaults-file=/etc/mysql/debian.cnf status|cut -f9 -d":"
+UserParameter=mysql.version,mysql -V

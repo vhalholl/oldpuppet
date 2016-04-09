@@ -1,0 +1,7 @@
+#
+# /etc/zabbix/zabbix-agentd.conf.d/apache
+# Configuration file for zabbix-agentd
+# Managed by Puppet
+#
+
+UserParameter=apache[*],/etc/zabbix/externalscripts/zapache.sh $1

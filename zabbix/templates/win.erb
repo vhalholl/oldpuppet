@@ -1,0 +1,32 @@
+# C:\Program Files\zabbix\zabbix_agentd.conf
+#
+# Managed by Puppet
+#
+
+LogFile=C:\Program Files\zabbix\zabbix_agentd.log
+
+<% if @zbxLogFileSize %>LogFileSize=<%= @zbxLogFileSize %><% else %>LogFileSize=2<% end %>
+<% if @zbxDebugLevel %>DebugLevel=<%= @zbxDebugLevel %><% else %>DebugLevel=0<% end %>
+
+<% if @zbxServer %>Server=<%= @zbxServer %><% else %>Server=10.193.2.6<% end %>
+<% if @zbxServerPort %>ServerPort=<%= @zbxServerPort %><% else %>ServerPort=10051<% end %>
+
+<% if @zbxHostname %>Hostname=<%= @zbxHostname %><% else %>Hostname=<%= fqdn %><% end %>
+<% if @zbxSourceIP %>SourceIP=<%= @zbxSourceIP %><% else %>SourceIP=<%= ipaddress %><% end %>
+<% if @zbxListenIP %>ListenIP=<%= @zbxListenIP %><% else %>ListenIP=<%= ipaddress %><% end %>
+<% if @zbxListenPort %>ListenPort=<%= @zbxListenPort %><% else %>ListenPort=10050<% end %>
+
+<% if @zbxEnableRemoteCommands %>EnableRemoteCommands=<%= @zbxEnableRemoteCommands %><% else %>EnableRemoteCommands=0<% end %>
+<% if @zbxAllowRoot %>AllowRoot=<%= @zbxAllowRoot %><% else %>AllowRoot=0<% end %>
+<% if @zbxLogRemoteCommands %>LogRemoteCommands=<%= @zbxLogRemoteCommands %><% else %>LogRemoteCommands=0<% end %>
+
+DisablePassive=0
+DisableActive=0
+
+RefreshActiveChecks=60
+BufferSend=5
+BufferSize=100
+MaxLinesPerSecond=100
+
+<% if @zbxStartAgents %>StartAgents=<%= @zbxStartAgents %><% else %>StartAgents=8<% end %>
+<% if @zbxTimeout %>Timeout=<%= @zbxTimeout %><% else %>Timeout=30<% end %>

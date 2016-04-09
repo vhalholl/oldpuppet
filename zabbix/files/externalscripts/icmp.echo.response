@@ -1,0 +1,4 @@
+#!/bin/bash
+if [[ ! -z $1 ]];then
+echo $(( $(ping -w 1 -c 1 $1 |grep '%' | cut -d " " -f 6 |cut -d '%' -f1) / 100 ))
+fi
