@@ -1,0 +1,99 @@
+2013-11-21 18:58:03,560 [main] INFO  DBforBIX - Starting DBforBIX Version 0.6.1
+ 2013-11-21 18:58:04,175 [main] INFO  DBforBIX - DBforBIX started with pid:10609
+ 2013-11-21 18:58:04,176 [main] INFO  DBforBIX - PidFile -> ./logs/orabbix.pid
+ 2013-11-21 18:58:04,188 [main] ERROR DBforBIX - Error on DBcfg while getting ORACLEDB1.Url null
+ 2013-11-21 18:58:04,189 [main] INFO  DBforBIX - Error on DBcfg while getting ORACLEDB1.User null
+ 2013-11-21 18:58:04,189 [main] ERROR DBforBIX - Error on DBcfg while getting DefaultUser null
+ 2013-11-21 18:58:04,189 [main] INFO  DBforBIX - Error on DBcfg while getting ORACLEDB1.Password null
+ 2013-11-21 18:58:04,189 [main] ERROR DBforBIX - Error on DBcfg getConnection while getting ORACLEDB1.Password null
+ 2013-11-21 18:58:04,190 [main] ERROR DBforBIX - Error on DBcfg while getting ORACLEDB1.DatabaseType null
+ 2013-11-21 18:58:04,253 [main] ERROR DBforBIX - Failed to construct ConnectionManagerjava.lang.NullPointerException
+ 2013-11-21 18:58:04,254 [main] ERROR DBforBIX - Error on Configurator for database ORACLEDB1 -->null
+ 2013-11-21 18:58:04,254 [main] INFO  DBforBIX - This Database ORACLEDB1 removed
+ 2013-11-21 18:58:04,254 [main] ERROR DBforBIX - Error on DBcfg while getting PGSQLDB2.Url null
+ 2013-11-21 18:58:04,254 [main] INFO  DBforBIX - Error on DBcfg while getting PGSQLDB2.User null
+ 2013-11-21 18:58:04,254 [main] ERROR DBforBIX - Error on DBcfg while getting DefaultUser null
+ 2013-11-21 18:58:04,254 [main] INFO  DBforBIX - Error on DBcfg while getting PGSQLDB2.Password null
+ 2013-11-21 18:58:04,255 [main] ERROR DBforBIX - Error on DBcfg getConnection while getting PGSQLDB2.Password null
+ 2013-11-21 18:58:04,255 [main] ERROR DBforBIX - Error on DBcfg while getting PGSQLDB2.DatabaseType null
+ 2013-11-21 18:58:04,255 [main] ERROR DBforBIX - Failed to construct ConnectionManagerjava.lang.NullPointerException
+ 2013-11-21 18:58:04,255 [main] ERROR DBforBIX - Error on Configurator for database PGSQLDB2 -->null
+ 2013-11-21 18:58:04,255 [main] INFO  DBforBIX - This Database PGSQLDB2 removed
+ 2013-11-21 18:58:04,255 [main] ERROR DBforBIX - Error on DBcfg while getting MSSQLDB3.Url null
+ 2013-11-21 18:58:04,255 [main] INFO  DBforBIX - Error on DBcfg while getting MSSQLDB3.User null
+ 2013-11-21 18:58:04,255 [main] ERROR DBforBIX - Error on DBcfg while getting DefaultUser null
+ 2013-11-21 18:58:04,255 [main] INFO  DBforBIX - Error on DBcfg while getting MSSQLDB3.Password null
+ 2013-11-21 18:58:04,255 [main] ERROR DBforBIX - Error on DBcfg getConnection while getting MSSQLDB3.Password null
+ 2013-11-21 18:58:04,256 [main] ERROR DBforBIX - Error on DBcfg while getting MSSQLDB3.DatabaseType null
+ 2013-11-21 18:58:04,256 [main] ERROR DBforBIX - Failed to construct ConnectionManagerjava.lang.NullPointerException
+ 2013-11-21 18:58:04,256 [main] ERROR DBforBIX - Error on Configurator for database MSSQLDB3 -->null
+ 2013-11-21 18:58:04,256 [main] INFO  DBforBIX - This Database MSSQLDB3 removed
+ 2013-11-21 18:58:04,256 [main] ERROR DBforBIX - Error on DBcfg while getting MYSQLDB4.Url null
+ 2013-11-21 18:58:04,256 [main] INFO  DBforBIX - Error on DBcfg while getting MYSQLDB4.User null
+ 2013-11-21 18:58:04,256 [main] ERROR DBforBIX - Error on DBcfg while getting DefaultUser null
+ 2013-11-21 18:58:04,256 [main] INFO  DBforBIX - Error on DBcfg while getting MYSQLDB4.Password null
+ 2013-11-21 18:58:04,256 [main] ERROR DBforBIX - Error on DBcfg getConnection while getting MYSQLDB4.Password null
+ 2013-11-21 18:58:04,256 [main] ERROR DBforBIX - Error on DBcfg while getting MYSQLDB4.DatabaseType null
+ 2013-11-21 18:58:04,257 [main] ERROR DBforBIX - Failed to construct ConnectionManagerjava.lang.NullPointerException
+ 2013-11-21 18:58:04,257 [main] ERROR DBforBIX - Error on Configurator for database MYSQLDB4 -->null
+ 2013-11-21 18:58:04,257 [main] INFO  DBforBIX - This Database MYSQLDB4 removed
+ 2013-11-21 18:58:04,257 [main] ERROR DBforBIX - Error on DBcfg while getting DB2DB5.Url null
+ 2013-11-21 18:58:04,257 [main] INFO  DBforBIX - Error on DBcfg while getting DB2DB5.User null
+ 2013-11-21 18:58:04,257 [main] ERROR DBforBIX - Error on DBcfg while getting DefaultUser null
+ 2013-11-21 18:58:04,257 [main] INFO  DBforBIX - Error on DBcfg while getting DB2DB5.Password null
+ 2013-11-21 18:58:04,257 [main] ERROR DBforBIX - Error on DBcfg getConnection while getting DB2DB5.Password null
+ 2013-11-21 18:58:04,257 [main] ERROR DBforBIX - Error on DBcfg while getting DB2DB5.DatabaseType null
+ 2013-11-21 18:58:04,258 [main] ERROR DBforBIX - Failed to construct ConnectionManagerjava.lang.NullPointerException
+ 2013-11-21 18:58:04,258 [main] ERROR DBforBIX - Error on Configurator for database DB2DB5 -->null
+ 2013-11-21 18:58:04,258 [main] INFO  DBforBIX - This Database DB2DB5 removed
+ 2013-11-21 18:58:04,258 [main] ERROR DBforBIX - ERROR on main - Connections is empty
+ 2013-11-21 18:58:55,171 [main] INFO  DBforBIX - Starting DBforBIX Version 0.6.1
+ 2013-11-21 18:58:55,198 [main] INFO  DBforBIX - DBforBIX started with pid:10917
+ 2013-11-21 18:58:55,198 [main] INFO  DBforBIX - PidFile -> ./logs/orabbix.pid
+ 2013-11-21 18:58:55,208 [main] ERROR DBforBIX - Error on DBcfg while getting ORACLEDB1.Url null
+ 2013-11-21 18:58:55,208 [main] INFO  DBforBIX - Error on DBcfg while getting ORACLEDB1.User null
+ 2013-11-21 18:58:55,208 [main] ERROR DBforBIX - Error on DBcfg while getting DefaultUser null
+ 2013-11-21 18:58:55,208 [main] INFO  DBforBIX - Error on DBcfg while getting ORACLEDB1.Password null
+ 2013-11-21 18:58:55,208 [main] ERROR DBforBIX - Error on DBcfg getConnection while getting ORACLEDB1.Password null
+ 2013-11-21 18:58:55,209 [main] ERROR DBforBIX - Error on DBcfg while getting ORACLEDB1.DatabaseType null
+ 2013-11-21 18:58:55,224 [main] ERROR DBforBIX - Failed to construct ConnectionManagerjava.lang.NullPointerException
+ 2013-11-21 18:58:55,224 [main] ERROR DBforBIX - Error on Configurator for database ORACLEDB1 -->null
+ 2013-11-21 18:58:55,225 [main] INFO  DBforBIX - This Database ORACLEDB1 removed
+ 2013-11-21 18:58:55,225 [main] ERROR DBforBIX - Error on DBcfg while getting PGSQLDB2.Url null
+ 2013-11-21 18:58:55,225 [main] INFO  DBforBIX - Error on DBcfg while getting PGSQLDB2.User null
+ 2013-11-21 18:58:55,225 [main] ERROR DBforBIX - Error on DBcfg while getting DefaultUser null
+ 2013-11-21 18:58:55,225 [main] INFO  DBforBIX - Error on DBcfg while getting PGSQLDB2.Password null
+ 2013-11-21 18:58:55,225 [main] ERROR DBforBIX - Error on DBcfg getConnection while getting PGSQLDB2.Password null
+ 2013-11-21 18:58:55,225 [main] ERROR DBforBIX - Error on DBcfg while getting PGSQLDB2.DatabaseType null
+ 2013-11-21 18:58:55,225 [main] ERROR DBforBIX - Failed to construct ConnectionManagerjava.lang.NullPointerException
+ 2013-11-21 18:58:55,225 [main] ERROR DBforBIX - Error on Configurator for database PGSQLDB2 -->null
+ 2013-11-21 18:58:55,225 [main] INFO  DBforBIX - This Database PGSQLDB2 removed
+ 2013-11-21 18:58:55,226 [main] ERROR DBforBIX - Error on DBcfg while getting MSSQLDB3.Url null
+ 2013-11-21 18:58:55,226 [main] INFO  DBforBIX - Error on DBcfg while getting MSSQLDB3.User null
+ 2013-11-21 18:58:55,226 [main] ERROR DBforBIX - Error on DBcfg while getting DefaultUser null
+ 2013-11-21 18:58:55,226 [main] INFO  DBforBIX - Error on DBcfg while getting MSSQLDB3.Password null
+ 2013-11-21 18:58:55,226 [main] ERROR DBforBIX - Error on DBcfg getConnection while getting MSSQLDB3.Password null
+ 2013-11-21 18:58:55,226 [main] ERROR DBforBIX - Error on DBcfg while getting MSSQLDB3.DatabaseType null
+ 2013-11-21 18:58:55,226 [main] ERROR DBforBIX - Failed to construct ConnectionManagerjava.lang.NullPointerException
+ 2013-11-21 18:58:55,226 [main] ERROR DBforBIX - Error on Configurator for database MSSQLDB3 -->null
+ 2013-11-21 18:58:55,226 [main] INFO  DBforBIX - This Database MSSQLDB3 removed
+ 2013-11-21 18:58:55,227 [main] ERROR DBforBIX - Error on DBcfg while getting MYSQLDB4.Url null
+ 2013-11-21 18:58:55,227 [main] INFO  DBforBIX - Error on DBcfg while getting MYSQLDB4.User null
+ 2013-11-21 18:58:55,227 [main] ERROR DBforBIX - Error on DBcfg while getting DefaultUser null
+ 2013-11-21 18:58:55,227 [main] INFO  DBforBIX - Error on DBcfg while getting MYSQLDB4.Password null
+ 2013-11-21 18:58:55,227 [main] ERROR DBforBIX - Error on DBcfg getConnection while getting MYSQLDB4.Password null
+ 2013-11-21 18:58:55,227 [main] ERROR DBforBIX - Error on DBcfg while getting MYSQLDB4.DatabaseType null
+ 2013-11-21 18:58:55,227 [main] ERROR DBforBIX - Failed to construct ConnectionManagerjava.lang.NullPointerException
+ 2013-11-21 18:58:55,227 [main] ERROR DBforBIX - Error on Configurator for database MYSQLDB4 -->null
+ 2013-11-21 18:58:55,227 [main] INFO  DBforBIX - This Database MYSQLDB4 removed
+ 2013-11-21 18:58:55,227 [main] ERROR DBforBIX - Error on DBcfg while getting DB2DB5.Url null
+ 2013-11-21 18:58:55,228 [main] INFO  DBforBIX - Error on DBcfg while getting DB2DB5.User null
+ 2013-11-21 18:58:55,228 [main] ERROR DBforBIX - Error on DBcfg while getting DefaultUser null
+ 2013-11-21 18:58:55,228 [main] INFO  DBforBIX - Error on DBcfg while getting DB2DB5.Password null
+ 2013-11-21 18:58:55,228 [main] ERROR DBforBIX - Error on DBcfg getConnection while getting DB2DB5.Password null
+ 2013-11-21 18:58:55,228 [main] ERROR DBforBIX - Error on DBcfg while getting DB2DB5.DatabaseType null
+ 2013-11-21 18:58:55,228 [main] ERROR DBforBIX - Failed to construct ConnectionManagerjava.lang.NullPointerException
+ 2013-11-21 18:58:55,228 [main] ERROR DBforBIX - Error on Configurator for database DB2DB5 -->null
+ 2013-11-21 18:58:55,228 [main] INFO  DBforBIX - This Database DB2DB5 removed
+ 2013-11-21 18:58:55,228 [main] ERROR DBforBIX - ERROR on main - Connections is empty
+ 
