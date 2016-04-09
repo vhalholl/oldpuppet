@@ -1,0 +1,15 @@
+# /etc/puppet/puppet.conf
+[main]
+server          = puppet.domain.tld
+confdir         = /etc/puppet
+logdir          = /var/log/puppet
+vardir          = /var/lib/puppet
+ssldir          = $vardir/ssl
+rundir          = /var/run/puppet
+factpath        = $vardir/lib/facter
+
+[agent]
+pluginsync      = true
+archive_files   = true
+report          = true
+reports         = store,log

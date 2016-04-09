@@ -1,0 +1,47 @@
+# /etc/puppet/puppet.conf
+[main]
+server          = puppet.domain.tld
+confdir         = /etc/puppet
+logdir          = /var/log/puppet
+vardir          = /var/lib/puppet
+rundir          = /var/run/puppet
+ssldir          = $vardir/ssl
+#prerun_command  = /etc/puppet/etckeeper-commit-pre
+#postrun_command = /etc/puppet/etckeeper-commit-post
+
+[agent]
+pluginsync      = true
+report          = true
+reports         = store,log #,http
+#reporturl      = http://puppet.domain.tld:3000/reports/upload
+
+[master]
+vardir          = /var/lib/puppet
+ssldir          = $vardir/ssl
+factpath        = $vardir/lib/facter
+reportdir       = $vardir/reports
+templatedir     = $confdir/templates
+modulepath      = $confdir/modules
+libdir          = $vardir/plugins
+#rails_loglevel = debug
+
+# Reports
+reports         = puppet_dashboard,store,log
+syslogfacility  = user
+external_nodes  = /usr/share/puppet-dashboard/bin/external_node 
+node_terminus   = exec
+runinterval     = 3600
+
+# DB
+storeconfigs      = true
+thin_storeconfigs = true
+dbadapter         = mysql
+dbuser            = puppet
+dbpassword        = puppetpass
+dbserver          = localhost
+dbsocket          = /var/run/mysqld/mysqld.sock
+
+# SSL Passenger
+ssl_client_header        = SSL_CLIENT_S_DN
+ssl_client_verify_header = SSL_CLIENT_VERIFY
+
