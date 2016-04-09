@@ -1,0 +1,39 @@
+VIM KeyMap 
+
+Main KeyMap >
+<\><e> : Edit vimrc
+<\><s> : Source vimrc
+<Tab> : (dictionary & code completition) 
+<Ctrl>+<w><w> : Toggle between windows
+
+Tab Management >
+<Ctrl>+<t> : New Tab
+<Ctrl>+<Left> : Previous Tab
+<Ctrl>+<Right> : Next Tab
+<Ctrl>+<q> : Close Tab
+
+F{1..12} KeyMap >
+<F1> : Built-in help
+<F2> : Toggle PasteMode
+<F3> : Set Spell (bind as <F6>for text)
+<F4> : Hiligths Searchs
+<F5> : Run
+<F6> : Debug
+<F7> : List Task and Todo
+<F8> : List Ctag
+<F9> : Make
+<F10> : Toggle this Reminder
+<F11> : 
+<F12> : Toggle mouse between Terminal & vim
+
+Project KeyMap >
+<\>+<C> : Create new project
+<\>+<R> : Refresh Recursively current project directory
+<\>+<r> : Refresh current project directory 
+
+VIM Alias 
+
+Project Alias :
+:Q : Quit All Buffer
+:W : write w/ sudo via tee
+
