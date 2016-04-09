@@ -1,0 +1,1 @@
+Acquire::http::proxy "http://<% if @httpProxyAddress %><%= @httpProxyAddress %><% else %>127.0.0.1<% end %>:<% if @httpProxyPort %><%= @httpProxyPort %><% else %>8080<% end %>/";

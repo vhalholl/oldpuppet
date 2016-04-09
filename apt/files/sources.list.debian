@@ -1,0 +1,6 @@
+# /etc/apt/source.list 
+
+# deb cdrom:[Debian GNU/Linux 7.0.0 _Wheezy_ - Official amd64 NETINST Binary-1 20130504-14:43]/ wheezy main
+# deb cdrom:[Debian GNU/Linux 7.0.0 _Wheezy_ - Official amd64 NETINST Binary-1 20130504-14:43]/ wheezy main
+
+# This file is empty, look at /etc/apt/sources.list.d/
