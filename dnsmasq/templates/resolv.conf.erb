@@ -1,0 +1,5 @@
+# Managed by Puppet
+search <%= resolvconfSearch %>
+
+<% resolvconfNameservers.split(";").each do |nameserver| -%>nameserver <%= nameserver %>
+<% end -%>

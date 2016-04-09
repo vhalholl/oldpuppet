@@ -1,0 +1,32 @@
+# Managed by Puppet
+user=dnsmasq
+group=nogroup
+pid-file=/var/run/dnsmasq/dnsmasq.pid
+
+# Adresse et port d'écoute
+
+listen-address=127.0.0.1
+port=53
+
+# Bind sur l'interface ou l'adresse de listen-address est configurée
+bind-interfaces
+#interface=lo
+
+# Ne resoud que pour les fqdn complet
+domain-needed
+# Ne cherche les classes privées que dans /etc/hosts ou renvoie "no such domain"
+bogus-priv
+# Ne pas chercher d'enregistrements dans /etc/hosts
+no-hosts
+# Obtiens les serveurs upstream depuis le fichier /etc/resolv.dnsmasq
+resolv-file=/etc/resolv.dnsmasq
+
+# Nombre max d'enregistrement (defaut 150)
+cache-size=200
+# Si on as pas de TTL depuis les serveurs upstream on
+neg-ttl=3600
+
+# Journalisation
+#log-facility=/var/log/dnsmasq.log
+#log-queries
+
