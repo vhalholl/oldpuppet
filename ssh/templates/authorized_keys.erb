@@ -1,0 +1,6 @@
+# /root/.ssh/authorized_key
+#
+# Managed by Puppet
+#
+<% sshAuthorizedKeys.split(";").each do |key| -%><%= key %>
+<% end -%>#
