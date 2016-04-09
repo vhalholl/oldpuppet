@@ -1,0 +1,2 @@
+# Managed by Puppet
+RSYSLOGD_OPTIONS="-c5 -x"
