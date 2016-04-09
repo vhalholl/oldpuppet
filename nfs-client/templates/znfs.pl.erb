@@ -1,0 +1,39 @@
+#!/usr/bin/perl -w
+#
+# Stat nfs v3&4
+# 
+# Managed by Puppet
+#
+use Data::Dumper;
+
+my @versions = ('3','4');
+my $version;
+
+while (defined($version = shift @versions))
+{
+    $command = "/usr/sbin/nfsstat -$version";
+    $zs = "/usr/bin/zabbix_sender -v -z <%= zbxServer %> -p 10051 -s <%= fqdn %> -k nfsv$version.";
+
+    my  @output = `$command`;
+
+    $res{totcalls} = $output[0]; # First line contains total calls
+    $res{totcalls} =~ s/Version $version\D+(\d+)\D+/$1/g;
+    $line = 1;
+    
+    while($line < $#output)
+    {
+        $output[$line] =~ s/\(|\)//g; # Get rid of parenthesis
+        @fields = split /\s+/,$output[$line]; # First field names on one line
+        $output[$line+1] =~ s/\d+%//g; # Get rid of percentage values
+        @values = split /\s+/,$output[$line+1]; # On next line field values
+    
+        for($field=0;$field <= $#fields;$field++)
+        {
+            #print "$zs$fields[$field] -o $values[$field]\n";
+            system("$zs$fields[$field] -o $values[$field]\n");
+            $res{$fields[$field]} = $values[$field];
+        }
+
+        $line+=2;
+    }
+}
