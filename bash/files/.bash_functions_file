@@ -1,0 +1,132 @@
+#.bash_functions_file
+
+## Suprime la ligne contennant l'occurence dans le fichier
+function rmatch(){
+	if [[ -z $1 && -z $2 ]];then
+		echo -e "Usage : rmatch <keywords> <file>\ne.g : rmatch nmap .bash_history";
+        elif [[ -w $2 && -s $2 ]];then
+		    echo "$(grep -v "$1" "$2")">"$2";
+	else
+		echo -e "$2 dont exist or is empty or read only\r";
+	fi
+}
+
+## Log readers
+logmost() { [[ -f $1 ]]&& ccze -A < $1 | most -R; }
+logtail() { [[ -f $1 ]]&& tail -f $1 | ccze -A; }
+
+## grep & sed
+function gres() {
+	if [ $# -lt "3" ];then
+	        echo "Usage : gres <pattern> <remplacement> <fichier>";
+	else
+		if [ -f "$3" ];then
+		    FILE="$3";
+			PATT="$1";
+			REPL="$2";
+			A="`echo | tr '\012' '\001' `";
+			sed -e "s$A$PATT$A$REPL$A" $FILE;
+			unset FILE PATT REPL A;
+		else
+	        	echo "$3 is not a file";
+		fi
+	fi
+}
+
+## Retrace / to dir 
+rdir(){
+	awk 'BEGIN{dir=DIR?DIR:ENVIRON["PWD"];l=split(dir,parts,"/");last="";for(i=1;i<l+1;i++){d=last"/"parts[i];gsub("//","/",d);system("ls -ld \""d"\"");last=d}}';
+}
+
+## Show Newest File
+newest(){
+	t=''; 
+	for i in "$@";do 
+		[[ -f $i ]] || continue;  
+		[[ -z $t || $i -nt $t ]] && t="$i"; 
+	done; 
+	echo "$t";
+	unset t;
+}
+
+## Show Oldest File
+oldest(){
+	t=''; 
+	for i in "$@";do 
+		[[ -f $i ]] || continue; 
+		[[ -z $t || $i -ot $t ]] && t="$i"; 
+	done; 
+	echo "$t";
+}
+
+## TODO: path absolue 
+apath(){
+	readlink -f "$1"; 
+}
+
+## Extraction
+function extract(){
+    if [[ -z $1 ]];then
+        echo -e "Usage : extract <archive_file>\ne.g : extract archive.tar.bz2";
+    elif [[ -f $1 ]] ; then #TODO: deal w/ the file command
+        case $1 in
+            *.tar.bz2)   tar xvjf $1        ;;
+            *.tar.gz)    tar xvzf $1        ;;
+            *.bz2)       bunzip2 $1         ;;
+            *.rar)       unrar x $1         ;;
+            *.cbr)       unrar x -ad $1     ;;
+            *.gz)        gunzip $1          ;;
+            *.tar)       tar xvf $1         ;;
+            *.cbt)       tar xvf $1         ;;
+            *.tbz2)      tar xvjf $1        ;;
+            *.tgz)       tar xvzf $1        ;;
+            *.zip)       unzip $1           ;;
+            *.cbz)       unzip $1           ;;
+            *.Z)         uncompress $1      ;;
+            *.7z)        7z x $1            ;;
+            *.cb7)       7z x $1            ;;
+            *)           echo "unknow archive format '$1'..."       ;;
+        esac
+    else
+        echo "'$1' is not a file!";
+    fi
+}
+
+# find todo
+function todo(){
+    #grep -i 'todo:' $(find ./* -type f ) 2>/dev/null;
+    rgrep -ina 'todo:' .
+}
+
+## Search Suid Files
+searchsuid(){
+	SFILE="./suidfiles.txt";
+
+	function _searchsuidfiles(){
+		find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -la {} \; 2>/dev/null >$SFILE &
+		wait $! "Recherche des fichiers en cours :" && _printsuidfiles;
+	}
+
+	function _printsuidfiles(){
+		if [ -s "$SFILE" ]; then
+			most $SFILE;
+		else
+			echo -e "$SFILE don't exist or empty";
+		fi
+	}	
+
+	if [ -e "$SFILE" ];then
+		echo -e "$SFILE already exist, do you want to remove it ? [Yy/Nn]";
+		read ans;
+        if [[ $ans == "Y" || $ans == "y" ]];then
+            rm -f $SFILE 
+            _searchsuidfiles;
+        else
+            _printsuidfiles;
+        fi
+    else
+        _searchsuidfiles;
+    fi
+
+	unset SFILE
+}

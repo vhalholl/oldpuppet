@@ -1,0 +1,106 @@
+#.bash_functions_netw
+
+## Get WAN IP address 
+function wanip(){
+	curl --connect-timeout 3 -s checkip.dyndns.org | egrep -o "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}";
+}
+
+## Get LAN IP address
+function lanip(){
+	ip a | grep 'inet' | egrep -o "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"
+}
+
+## Get Broadcast IP address
+function bcastadd(){
+    for net in $(ip route show | cut -f1 -d\  | grep -v default); do ipcalc $net | grep Broadcast | cut -d\  -f 2; done;
+}
+
+## Get Networks IP address
+function mesip(){
+	lanip && wanip;
+}
+
+## TODO: Get network segments
+function netseg(){
+	for b in $(echo $1);do 
+		for x in $(seq 10);do 
+			echo $b.$x; 
+		done; 
+	done 
+}
+
+## Get RFC
+getrfc(){
+    if [ -z $1 ];then
+        echo -e "Usage : getrfc <number>\ne.g : getrfc 2782\n";
+    else
+        wget -U "GetRFC(0.1)" -qO- http://www.ietf.org/rfc/rfc$1.txt |most
+    fi
+}
+
+## GeoIP lookup
+geoloc(){
+    if [ -z $1 ];then
+        echo -e "Usage : geoloc <ip/host>\ne.g : geoloc www.google.com\n";
+    else
+        wget -U "GeoIpLoc(0.3)" -qO- http://www.geoiptool.com/?IP=$1 \
+            |html2text |grep 'Host Name\|IP Address\|City\|Country\|code\|itude' |tr '[\|\_]' ' ' |sed 's/^[ \t]*//' |sed 's/:/:\t/' |sed 's/City:/City:\t/'        
+    fi
+}
+
+## IP obfuscation 
+ipobf(){
+	BIN="/usr/bin/printf";
+	PRE="0x";
+	if [  -z "$1" ];then
+	        echo -e "Usage: ipobf <ip_address>\ne.g: ipobf wWwW.XxXx.yYyY.ZzZz";
+	else
+	        IP[0]=$(echo $1|cut -d . -f1);
+	        IP[1]=$(echo $1|cut -d . -f2);
+	        IP[2]=$(echo $1|cut -d . -f3);
+	        IP[3]=$(echo $1|cut -d . -f4);
+
+	        HEX[0]=$($BIN "%x" ${IP[0]});
+	        HEX[1]=$($BIN "%x" ${IP[1]});
+	        HEX[2]=$($BIN "%x" ${IP[2]});
+	        HEX[3]=$($BIN "%x" ${IP[3]});
+            echo -e "Hexa  : $PRE${HEX[0]}.$PRE${HEX[1]}.$PRE${HEX[2]}.$PRE${HEX[3]}";	
+
+	        OCT[0]=$($BIN "%08o" ${IP[0]});
+	        OCT[1]=$($BIN "%08o" ${IP[1]});
+	        OCT[2]=$($BIN "%08o" ${IP[2]});
+	        OCT[3]=$($BIN "%08o" ${IP[3]});
+            echo -e "Octal : ${OCT[0]}.${OCT[1]}.${OCT[2]}.${OCT[3]}";
+
+	        (("DW_IP=( ${IP[0]} * 256**3) + (${IP[1]} * 256**2) + (${IP[2]} * 256) + ${IP[3]}"));
+	        echo -e "Dword : $DW_IP";
+	        unset IP[*] HEX[*] OCT[*] DW_IP;
+	fi
+}
+
+## IP deobfuscation
+ipdeobf(){
+	BIN="/usr/bin/printf";
+	if [[ -z "$1" ]];then
+	        echo -e "Usage : ipdeobf <obfusced address>\ne.g : ipdeobf wWwW.XxXx.yYyY.ZzZz";
+	elif [[ $1 = ${1%.*} ]];then
+	    (("MOD[0]=$1%256"));
+	    (("DIV[0]=$1/256"));
+	    (("MOD[1]=${DIV[0]}%256"));
+	    (("DIV[1]=${DIV[0]}/256"));
+	    (("MOD[2]=${DIV[1]}%256"));
+	    (("MOD[3]=${DIV[1]}/256"));
+	    echo "IPv4  : ${MOD[3]}.${MOD[2]}.${MOD[1]}.${MOD[0]}";
+	else
+        IP[0]=$(echo $1|cut -d . -f1);
+	    IP[1]=$(echo $1|cut -d . -f2);
+	    IP[2]=$(echo $1|cut -d . -f3);
+	    IP[3]=$(echo $1|cut -d . -f4);
+
+	    DOB[0]=$($BIN "%d" ${IP[0]});
+	    DOB[1]=$($BIN "%d" ${IP[1]});
+	    DOB[2]=$($BIN "%d" ${IP[2]});
+        DOB[3]=$($BIN "%d" ${IP[3]});
+        echo "IPv4  : ${DOB[0]}.${DOB[1]}.${DOB[2]}.${DOB[3]}";
+	fi
+}

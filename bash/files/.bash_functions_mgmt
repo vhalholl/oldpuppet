@@ -1,0 +1,6 @@
+#.bash_functions_mgmt
+
+## Apt Pinings
+function aptpins(){
+    apt-cache policy | awk '/^[ ]+[0-9]/ && !/(status|Translation)/ { print $1 " " $2 " " substr($3,1,index($3,"/")-1) }' | sort -rn | uniq;
+}
